@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  machine: one
+  ssh_key: MyString
+  passphrase: MyString
+
+two:
+  user: two
+  machine: two
+  ssh_key: MyString
+  passphrase: MyString

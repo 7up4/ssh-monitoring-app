@@ -1,0 +1,37 @@
+%p#notice= notice
+%p
+  %strong Ssh user:
+  = @machine.ssh_user
+%p
+  %strong Ssh host:
+  = @machine.ssh_host
+%p
+  %strong Cpu:
+  = @machine.cpu
+%p
+  %strong Number of cores:
+  = @machine.number_of_cores
+%p
+  %strong Cpu max freq:
+  = @machine.cpu_max_freq
+%p
+  %strong Kernel:
+  = @machine.kernel
+%p
+  %strong Hostname:
+  = @machine.hostname
+%p
+  %strong Architecture:
+  = @machine.architecture
+%p
+  %strong Memory total:
+  = @machine.memory_total
+%p
+  %strong Memory used:
+  = @machine.memory_used
+%p
+  %strong Memory type:
+  = @machine.memory_type
+= link_to 'Edit', edit_machine_path(@machine)
+|
+= link_to 'Back', machines_path

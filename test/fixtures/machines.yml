@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ssh_user: MyString
+  ssh_host: MyString
+  cpu: MyString
+  number_of_cores: 1
+  cpu_max_freq: 1.5
+  kernel: MyString
+  hostname: MyString
+  architecture: MyString
+  memory_total: 1.5
+  memory_used: 1.5
+  memory_type: MyString
+
+two:
+  ssh_user: MyString
+  ssh_host: MyString
+  cpu: MyString
+  number_of_cores: 1
+  cpu_max_freq: 1.5
+  kernel: MyString
+  hostname: MyString
+  architecture: MyString
+  memory_total: 1.5
+  memory_used: 1.5
+  memory_type: MyString
