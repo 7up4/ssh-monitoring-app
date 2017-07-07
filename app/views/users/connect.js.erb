@@ -1,0 +1,5 @@
+<% if @info.present? %>
+  $("#result").html("<%= escape_javascript render 'connection_result' %> ")
+<% else %>
+  $("#result").html("<p><b> Данных нет. </b></p>")
+<% end %>

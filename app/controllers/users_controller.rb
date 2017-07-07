@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -8,6 +7,15 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def connect
+    @info = params.has_key?(:connect) ? User.connect(params[:connect]) : @info = []
+    p @info
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
+  
   # GET /users/1
   # GET /users/1.json
   def show
@@ -68,6 +76,10 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def connect_params
+      params.permit(connect: [:host, :user, :private_key, :passphrase, :process_name])
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :second_name, :admin)

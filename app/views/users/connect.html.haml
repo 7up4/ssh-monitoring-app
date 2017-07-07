@@ -1,0 +1,19 @@
+= form_tag connect_users_path, method: 'post', remote: true, multipart: true do
+  .field
+    = label_tag "Host"
+    = text_field_tag 'connect[host]'
+  .field
+    = label_tag "User"
+    = text_field_tag 'connect[user]'
+  .field
+    = label_tag "Private key"
+    = file_field_tag 'connect[private_key]'
+  .field
+    = label_tag "Passphrase"
+    = password_field_tag 'connect[passphrase]'
+  .field
+    = label_tag "Process name"
+    = text_field_tag 'connect[process_name]'
+  .actions
+    = submit_tag 'Connect'
+#result

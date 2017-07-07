@@ -10,37 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706140432) do
+ActiveRecord::Schema.define(version: 20170706094243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "connections", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "machine_id"
-    t.string "ssh_key"
-    t.string "passphrase"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["machine_id"], name: "index_connections_on_machine_id"
-    t.index ["user_id"], name: "index_connections_on_user_id"
-  end
-
-  create_table "machines", force: :cascade do |t|
-    t.string "ssh_user", null: false
-    t.string "ssh_host", null: false
-    t.string "cpu"
-    t.integer "number_of_cores"
-    t.float "cpu_max_freq"
-    t.string "kernel"
-    t.string "hostname"
-    t.string "architecture"
-    t.float "memory_total"
-    t.float "memory_used"
-    t.string "memory_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
@@ -63,6 +36,4 @@ ActiveRecord::Schema.define(version: 20170706140432) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "connections", "machines"
-  add_foreign_key "connections", "users"
 end
