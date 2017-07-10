@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
   def connect
     @info = params.has_key?(:connect) ? User.connect(params[:connect]) : @info = []
-    p @info
     respond_to do |format|
       format.js
       format.html
@@ -77,7 +76,7 @@ class UsersController < ApplicationController
     end
 
     def connect_params
-      params.permit(connect: [:host, :user, :private_key, :passphrase, :process_name])
+      params.permit(connect: [:host, :user, :private_key, :passphrase, :process_name, :used_port])
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -41,6 +41,8 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
+    attr_encrypted (3.0.3)
+      encryptor (~> 3.0.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
@@ -69,6 +71,7 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    encryptor (3.0.0)
     erubi (1.6.1)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -100,6 +103,8 @@ GEM
     mini_portile2 (2.2.0)
     minitest (5.10.2)
     multi_json (1.12.1)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
     net-ssh (4.1.0)
     nio4r (2.1.0)
     nokogiri (1.8.0)
@@ -193,6 +198,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  attr_encrypted
   bcrypt (~> 3.1.7)
   byebug
   capybara (~> 2.13)
@@ -203,6 +209,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  net-scp
   net-ssh
   pg (~> 0.18)
   puma (~> 3.7)
