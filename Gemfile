@@ -55,6 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use net-ssh for ssh-connections
 gem 'net-ssh'
+# Use net-scp for placing script to remote machine
 gem 'net-scp'
 # Flexible authentication solution
 gem 'devise'
@@ -64,3 +65,6 @@ gem 'haml'
 gem 'cocoon'
 gem 'jquery-rails'
 gem 'attr_encrypted'
+# UI style
+gem 'bootstrap-sass'
+gem 'bootstrap-filestyle-rails'

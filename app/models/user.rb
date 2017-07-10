@@ -8,7 +8,7 @@ class User < ApplicationRecord
   
   def self.connect(params)
     # Read SSH-key from file
-    private_key_data = params[:private_key].tempfile.read
+    private_key_data = params[:private_key].present? ? params[:private_key].tempfile.read : ""
     host = params[:host]
     user = params[:user]
     passphrase = params[:passphrase]

@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   end
 
   def connect
-    @info = params.has_key?(:connect) ? User.connect(params[:connect]) : @info = []
+    if params.has_key?(:connect) then
+      result = User.connect(params[:connect])
+      @output = result.first
+      @json_result = result.last
+    end
     respond_to do |format|
       format.js
       format.html

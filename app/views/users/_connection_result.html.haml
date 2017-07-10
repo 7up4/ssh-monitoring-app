@@ -1,3 +1,25 @@
 %h1
   Result
-= @info.first
+= @output
+- if @json_result.present?
+  %table.table.table-bordered.table-hover
+    %thead.thead-inverse
+      %tr
+        %th Command
+        %th CPU load
+        %th Disk usage
+        %th Hostname
+        %th Name
+        %th Path
+        %th PID
+        %th Memory usage
+    %tbody
+      %tr
+        %th= @json_result["cmd"]
+        %th= @json_result["cpuload"]
+        %th= @json_result["diskusage"]
+        %th= @json_result["hostname"]
+        %th= @json_result["name"]
+        %th= @json_result["path"]
+        %th= @json_result["pid"]
+        %th= @json_result["ramload"]
