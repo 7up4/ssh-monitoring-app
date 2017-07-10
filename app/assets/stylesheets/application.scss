@@ -13,3 +13,13 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ 
+ .devise_login{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ .login_block{
+   width: 25%;
+ }
