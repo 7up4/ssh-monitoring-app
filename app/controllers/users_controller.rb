@@ -83,7 +83,7 @@ class UsersController < ApplicationController
     end
 
     def connect_params
-      params.permit(connect: [:host, :user, :port, :private_key, :passphrase, :process_name, :port_to_check])
+      params.permit(connect: [:host, :user, :port, :method, :private_key, :password, :passphrase, :process_name, :port_to_check])
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.

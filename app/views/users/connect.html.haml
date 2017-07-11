@@ -14,18 +14,26 @@
         = number_field_tag 'connect[port]', nil, class: 'form-control', min: 0, max: 65535
     .col-md-3
       .form-group
+        = label_tag "Connection method"
+        = select_tag 'connect[method]', options_for_select(["By password", "By private key"]), {class: 'form-control select_method'}
+  .row
+    .col-md-3.private_key.hidden
+      .form-group
         = label_tag "Private key"
         = file_field_tag 'connect[private_key]', class: 'filestyle', data: {placeholder: "No file"}
-  .row
-    .col-md-4
+    .col-md-3.password
+      .form-group
+        = label_tag "Password"
+        = password_field_tag 'connect[password]', "", class: 'form-control'
+    .col-md-3.passphrase.hidden
       .form-group
         = label_tag "Passphrase"
         = password_field_tag 'connect[passphrase]', "", class: 'form-control'
-    .col-md-4
+    .col-md-3
       .form-group
         = label_tag "Process name"
         = text_field_tag 'connect[process_name]', "", class: 'form-control'
-    .col-md-4
+    .col-md-3
       .form-group
         = label_tag "Port to check"
         = number_field_tag 'connect[port_to_check]', nil, class: 'form-control', min: 0, max: 65535
