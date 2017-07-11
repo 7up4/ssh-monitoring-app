@@ -1,5 +1,5 @@
 %h2
-  Edit #{resource_name.to_s.humanize}
+  Your profile
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages!
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -39,5 +39,4 @@
   .actions.btn-group
     = f.submit "Update", {class: 'btn btn-primary btn-responsive'}
     = link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger btn-responsive'
-    = link_to "Back", :back, class: 'btn btn-success btn-responsive'
 

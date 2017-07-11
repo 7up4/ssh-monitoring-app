@@ -105,7 +105,8 @@ p.cpuload = ' '.join((path[0], '%'))
 p.ramload = ' '.join((path[1], 'MB'))
 
 try:
-    path = check_output('lsof -i :%s' % args.port, shell=True)
+    bin_path = sys.executable
+    path = check_output('/usr/sbin/lsof -i :%s' % args.port, shell=True)
     if p.name in path: 
    		path = "\nPort %s is used by %s\n" % (args.port, p.name) 
     returncode = 0

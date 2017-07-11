@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Devise configuration
   devise_for :users
-  resources :users, :only => [:show, :index] do
+  resources :users, :only => [:show] do
     collection do
       get :connect
       post :connect

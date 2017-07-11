@@ -12,6 +12,9 @@ class UsersController < ApplicationController
       result = User.connect(params[:connect])
       @output = result.first
       @json_result = result.last
+    else
+      @output = ""
+      @json_result = ""
     end
     respond_to do |format|
       format.js
@@ -80,7 +83,7 @@ class UsersController < ApplicationController
     end
 
     def connect_params
-      params.permit(connect: [:host, :user, :private_key, :passphrase, :process_name, :used_port])
+      params.permit(connect: [:host, :user, :port, :private_key, :passphrase, :process_name, :port_to_check])
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.
