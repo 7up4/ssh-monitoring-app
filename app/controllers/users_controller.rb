@@ -11,11 +11,14 @@ class UsersController < ApplicationController
     if params.has_key?(:connect) then
       result = User.connect(params[:connect])
       @output = result.first
-      @json_result = result.last
+      @json_result = result[1]
+      @return_code = result.last
     else
       @output = ""
       @json_result = ""
+      @return_code = -1
     end
+    p @return_code
     respond_to do |format|
       format.js
       format.html

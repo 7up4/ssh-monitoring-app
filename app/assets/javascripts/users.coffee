@@ -4,19 +4,20 @@
 $(document).on 'turbolinks:load', ->
   changeConnectionMethod()
   if($(".bootstrap-filestyle").length == 0)
-    $(":file").filestyle()
+    $(":file").filestyle({buttonName: "btn-primary"})
 
 changeConnectionMethod= ->
-  $(".password").removeClass("hidden").find(":input").prop('disabled', false);
-  $(".private_key").addClass("hidden").find(":input").prop('disabled', true);
-  $(".passphrase").addClass("hidden").find(":input").prop('disabled', true);
+  toggle_fields($(".select_method"))
   $(".select_method").change ->
-    if($(this).val() == 'By private key')
-      $(".password").toggleClass("hidden").find(":input").prop('disabled', true);
-      $(".private_key").toggleClass("hidden").find(":input").prop('disabled', false);
-      $(".passphrase").toggleClass("hidden").find(":input").prop('disabled', false);
-    else
-      $(".password").toggleClass("hidden").find(":input").prop('disabled', false);
-      $(".private_key").toggleClass("hidden").find(":input").prop('disabled', true);
-      $(".passphrase").toggleClass("hidden").find(":input").prop('disabled', true);
+    $(":file").filestyle({buttonName: "btn-primary"})
+    toggle_fields($(this))
     
+toggle_fields = (selector) -> 
+  if(selector.val() == 'By private key')
+    $(".password").addClass("hidden").find(":input").prop('disabled', true);
+    $(".private_key").removeClass("hidden").find(":input").prop('disabled', false);
+    $(".passphrase").removeClass("hidden").find(":input").prop('disabled', false);
+  else
+    $(".password").removeClass("hidden").find(":input").prop('disabled', false);
+    $(".private_key").addClass("hidden").find(":input").prop('disabled', true);
+    $(".passphrase").addClass("hidden").find(":input").prop('disabled', true);

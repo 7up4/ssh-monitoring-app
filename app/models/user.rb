@@ -12,7 +12,7 @@ class User < ApplicationRecord
     method = params[:method]
     host = params[:host]
     user = params[:user]
-    port = params[:port].to_s || "22"
+    port = params[:port].present? ? params[:port].to_s : nil
     password = params[:password]
     passphrase = params[:passphrase]
     process_name = params[:process_name]
@@ -29,10 +29,10 @@ class User < ApplicationRecord
                       user,
                       "#{Rails.root}/vendor/process_info.py",
                       remote_path + tmp_script_name,
-                      :ssh => { port: port, key_data: [private_key_data], passphrase: passphrase, auth_methods: ['publickey'] }
+                      :ssh => { port: port, key_data: [private_key_data], passphrase: passphrase, auth_methods: ['publickey'], non_interactive: true }
                       )
       begin
-        ssh_tunnel = Net::SSH.start(host, user, port: port, key_data: [private_key_data], passphrase: passphrase, auth_methods: ['publickey'])
+        ssh_tunnel = Net::SSH.start(host, user, port: port, key_data: [private_key_data], passphrase: passphrase, auth_methods: ['publickey'], non_interactive: true)
         output = ssh_tunnel.exec! "source ~/.bashrc; source ~/.bash_profile; python2.7 #{remote_path}#{tmp_script_name} -j #{process_name} #{port_to_check}"
         json_file = ssh_tunnel.exec! "cat #{remote_path}#{json_file_name} 2>/dev/null"
         json_file_data = json_file.present? ? JSON.parse(json_file) : nil
@@ -41,7 +41,7 @@ class User < ApplicationRecord
         ssh_tunnel.exec! "rm #{remote_path}#{json_file_name}"
         ssh_tunnel.close if ssh_tunnel
       end
-      return [output, json_file_data]
+      return [output, json_file_data, 0]
     else
       Net::SCP.upload!(host,
                       user,
@@ -59,9 +59,9 @@ class User < ApplicationRecord
         ssh_tunnel.exec! "rm #{remote_path}#{json_file_name}"
         ssh_tunnel.close if ssh_tunnel
       end
-      return [output, json_file_data]
+      return [output, json_file_data, 0]
     end
   rescue => e
-    return ["#{e.to_s}",""]
+    return ["#{e.to_s}","", -1]
   end
 end

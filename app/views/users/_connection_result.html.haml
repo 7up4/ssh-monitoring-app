@@ -1,10 +1,15 @@
 %h1
   Response
-= @output
+- if @return_code == -1
+  .output.alert.alert-danger
+    = @output
+- else
+  .output.alert.alert-success
+    = @output
 - if @json_result.present?
-  %table.table.table-bordered.table-hover
-    %thead.thead-inverse
-      %tr
+  %table.table.table-bordered.table-hover.table-responsive
+    %thead
+      %tr.success
         %th Command
         %th CPU load
         %th Disk usage
